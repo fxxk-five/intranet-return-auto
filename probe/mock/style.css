@@ -1,0 +1,64 @@
+/* 模拟页面样式：故意保留企业后台的典型结构（el-* 类名、fixed 弹窗、z-index 高） */
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font: 14px/1.6 "Microsoft YaHei", "Segoe UI", sans-serif;
+  color: #1f2329;
+  background: #f0f2f5;
+}
+.app { max-width: 1080px; margin: 0 auto; padding: 16px; }
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #1f4e79; color: #fff; padding: 10px 16px; border-radius: 4px 4px 0 0;
+}
+.topbar .brand { font-size: 16px; font-weight: 600; letter-spacing: 1px; }
+.topbar a { color: #cfe3ff; }
+.tabbar { display: flex; background: #fff; border-bottom: 1px solid #dcdfe6; }
+.tab {
+  flex: 0 0 auto; padding: 10px 22px; border: 0; background: transparent;
+  font-size: 14px; cursor: pointer; color: #4b5563; border-bottom: 2px solid transparent;
+}
+.tab.active { color: #1f4e79; font-weight: 600; border-bottom-color: #1f4e79; }
+.panel { background: #fff; padding: 18px; border: 1px solid #dcdfe6; border-top: 0; }
+.panel.hidden { display: none; }
+.panel label { display: block; margin: 10px 0; color: #374151; }
+input[type=text], textarea, select {
+  font-size: 14px; padding: 6px 10px; border: 1px solid #dcdfe6; border-radius: 4px;
+  min-width: 260px; font-family: inherit;
+}
+.btn {
+  margin: 6px 8px 6px 0; padding: 8px 20px; border: 1px solid #dcdfe6; border-radius: 4px;
+  background: #fff; cursor: pointer; font-size: 14px;
+}
+.btn:hover { border-color: #409eff; color: #409eff; }
+.btn.primary { background: #1f4e79; border-color: #1f4e79; color: #fff; }
+.btn.primary:hover { background: #2c6ba8; color: #fff; }
+.hint { color: #6b7280; font-size: 13px; margin-top: 10px; }
+.result-list { margin: 12px 0 0; padding-left: 18px; color: #374151; }
+.result-list li { padding: 2px 0; }
+.table-wrap { margin: 12px 0; border: 1px solid #ebeef5; max-height: 260px; overflow: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 6px 10px; border-bottom: 1px solid #ebeef5; text-align: left; font-size: 13px; }
+th { background: #fafafa; font-weight: 600; }
+.statusbar { background: #fff; border: 1px solid #dcdfe6; border-top: 0; padding: 6px 18px; color: #6b7280; font-size: 12px; }
+
+/* DOM 模态框：position fixed + z-index 远高于 1000，符合 §7.6 的 dom_modal 判定 */
+.modal-mask {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, .45);
+  display: flex; align-items: center; justify-content: center; z-index: 2001;
+}
+.modal-mask.hidden { display: none; }
+.modal {
+  background: #fff; border-radius: 6px; width: 420px; box-shadow: 0 8px 30px rgba(0,0,0,.2);
+}
+.modal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 16px; border-bottom: 1px solid #ebeef5; font-weight: 600;
+}
+.modal-close {
+  border: 0; background: transparent; font-size: 20px; line-height: 1; cursor: pointer; color: #909399;
+}
+.modal-close:hover { color: #f56c6c; }
+.modal-body { padding: 18px 16px; }
+.modal-footer { padding: 10px 16px; border-top: 1px solid #ebeef5; text-align: right; }

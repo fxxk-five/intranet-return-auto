@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>模拟寄递平台 · 退货流程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <span class="brand">模拟寄递平台</span>
+    <span class="user">操作员：测试 <a href="#" id="logout">退出</a></span>
+  </header>
+
+  <!-- 业务菜单：真实企业系统是左侧菜单，探针靠读这里的链接自动巡页 -->
+  <nav class="menubar" style="display:none">
+    <a href="?page=scan">下段扫描</a>
+    <a href="?page=print">详情单补打</a>
+    <a href="?page=return">退回寄件人</a>
+    <a href="?page=handover">投递归班交接</a>
+  </nav>
+
+  <!-- Q4 模拟：DOM 标签页（class 含 tab，共 4 个） -->
+  <nav class="tabbar">
+    <button class="tab active" data-tab="A">下段扫描</button>
+    <button class="tab" data-tab="B">详情单补打</button>
+    <button class="tab" data-tab="C">退回寄件人</button>
+    <button class="tab" data-tab="D">投递归班交接</button>
+  </nav>
+
+  <!-- 阶段A 下段扫描 -->
+  <section class="panel" id="panel-A">
+    <label>邮件号码
+      <input id="mailNo" name="mailNo" type="text" placeholder="请输入邮件号码" autocomplete="off">
+    </label>
+    <button id="btnOk" class="btn primary">确定</button>
+    <button id="confirmScan" class="btn">确认下段</button>
+    <iframe id="bizFrame" src="frame.html" style="width:100%;height:150px;border:1px dashed #dcdfe6;margin-top:10px"></iframe>
+    <div class="hint">已输入：<b id="scanCount">0</b> 个单号（模拟页记录，仅用于观察）</div>
+    <ul id="scanList" class="result-list"></ul>
+  </section>
+
+  <!-- 阶段B 详情单补打 -->
+  <section class="panel hidden" id="panel-B">
+    <label>邮件号码（英文逗号分隔）
+      <textarea id="printNos" rows="3" cols="60" placeholder="710000000004161,710000000004162"></textarea>
+    </label>
+    <button id="btnQuery" class="btn">查询</button>
+    <div class="table-wrap">
+      <table id="printTable">
+        <thead><tr><th><input type="checkbox" id="checkAllTop"> 全选</th><th>邮件号</th><th>状态</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <label>打印模板
+      <select id="template">
+        <option value="gnkb-zd">国内快包面单-正式</option>
+        <option value="gnkb-cs">国内快包面单-测试</option>
+      </select>
+    </label>
+    <button id="btnPrint" class="btn primary">打印</button>
+    <button id="btnConfirmPrint" class="btn">确定打印</button>
+  </section>
+
+  <!-- 阶段C 退回寄件人 / 妥投确认 -->
+  <section class="panel hidden" id="panel-C">
+    <label>邮件号码
+      <input id="returnMailNo" name="returnMailNo" type="text" placeholder="请输入邮件号码">
+    </label>
+    <button id="btnReturn" class="btn primary">退回寄件人</button>
+    <button id="btnDelivered" class="btn">妥投确认</button>
+    <ul id="returnList" class="result-list"></ul>
+  </section>
+
+  <!-- 阶段D 投递归班交接 -->
+  <section class="panel hidden" id="panel-D">
+    <p>当前批次：<b>未开始</b></p>
+    <button id="btnHandover" class="btn primary">→</button>
+    <div class="hint">点击 → 完成交班（模拟流程结束态）</div>
+  </section>
+
+  <footer class="statusbar"><span id="status">就绪</span></footer>
+</div>
+
+<!-- DOM 模态框（探针要把它归为 dom_modal） -->
+<div class="modal-mask hidden" id="modalMask">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <span id="modalTitle">提示</span>
+      <button class="modal-close" id="modalClose" aria-label="关闭">×</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer" id="modalFooter"></div>
+  </div>
+</div>
+
+<!-- 内联引导脚本：真实企业系统里很常见（探针在 --no-debugger 时靠它做兜底） -->
+<script>
+  window.__mockInlineBootstrap = { version: "mock-1.0", startedAt: Date.now() };
+</script>
+<script src="app.js"></script>
+</body>
+</html>

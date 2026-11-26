@@ -1,0 +1,329 @@
+{
+  "sop_actions": [
+    {
+      "no": 1,
+      "step": "A",
+      "name": "输入邮件号",
+      "hint": "在'邮件号码'框里输入"
+    },
+    {
+      "no": 2,
+      "step": "A",
+      "name": "点确定",
+      "hint": "每个单号都要点一次"
+    },
+    {
+      "no": 3,
+      "step": "A",
+      "name": "点确认下段",
+      "hint": "全部输完后"
+    },
+    {
+      "no": 4,
+      "step": "B",
+      "name": "点详情单补打"
+    },
+    {
+      "no": 5,
+      "step": "B",
+      "name": "粘贴单号串",
+      "hint": "英文逗号，无空格"
+    },
+    {
+      "no": 6,
+      "step": "B",
+      "name": "点查询"
+    },
+    {
+      "no": 7,
+      "step": "B",
+      "name": "勾选全选"
+    },
+    {
+      "no": 8,
+      "step": "B",
+      "name": "选打印模板"
+    },
+    {
+      "no": 9,
+      "step": "B",
+      "name": "点打印"
+    },
+    {
+      "no": 10,
+      "step": "B",
+      "name": "点确定打印"
+    },
+    {
+      "no": 11,
+      "step": "B",
+      "name": "关闭弹框(x)"
+    },
+    {
+      "no": 12,
+      "step": "B",
+      "name": "填收件人手机号"
+    },
+    {
+      "no": 13,
+      "step": "C",
+      "name": "点退回寄件人"
+    },
+    {
+      "no": 14,
+      "step": "C",
+      "name": "逐单输入+Enter"
+    },
+    {
+      "no": 15,
+      "step": "C",
+      "name": "点妥投确认"
+    },
+    {
+      "no": 16,
+      "step": "C",
+      "name": "点关闭"
+    },
+    {
+      "no": 17,
+      "step": "D",
+      "name": "打开投递归班交接"
+    },
+    {
+      "no": 18,
+      "step": "D",
+      "name": "选投递员"
+    },
+    {
+      "no": 19,
+      "step": "D",
+      "name": "点查询"
+    },
+    {
+      "no": 20,
+      "step": "D",
+      "name": "点确定"
+    },
+    {
+      "no": 21,
+      "step": "D",
+      "name": "点 ->"
+    }
+  ],
+  "sop_flow": {
+    "version": 1,
+    "source": "自动退货处理.doc",
+    "steps": [
+      {
+        "no": 1,
+        "step": "A",
+        "name": "输入邮件号",
+        "repeat": {
+          "min": 1,
+          "max": 21
+        },
+        "required": true
+      },
+      {
+        "no": 2,
+        "step": "A",
+        "name": "点确定",
+        "repeat": {
+          "min": 1,
+          "max": 21
+        },
+        "required": true
+      },
+      {
+        "no": 3,
+        "step": "A",
+        "name": "点确认下段",
+        "repeat": {
+          "min": 1,
+          "max": 1
+        },
+        "required": true
+      },
+      {
+        "no": 4,
+        "step": "B",
+        "name": "点详情单补打",
+        "repeat": {
+          "min": 1,
+          "max": 1
+        },
+        "required": true
+      },
+      {
+        "no": 5,
+        "step": "B",
+        "name": "粘贴单号串",
+        "repeat": {
+          "min": 1,
+          "max": 1
+        },
+        "required": true
+      },
+      {
+        "no": 6,
+        "step": "B",
+        "name": "点查询",
+        "repeat": {
+          "min": 1,
+          "max": 3
+        },
+        "required": true
+      },
+      {
+        "no": 7,
+        "step": "B",
+        "name": "勾选全选",
+        "repeat": {
+          "min": 1,
+          "max": 3
+        },
+        "required": true
+      },
+      {
+        "no": 8,
+        "step": "B",
+        "name": "选打印模板",
+        "repeat": {
+          "min": 0,
+          "max": 3
+        },
+        "required": false
+      },
+      {
+        "no": 9,
+        "step": "B",
+        "name": "点打印",
+        "repeat": {
+          "min": 1,
+          "max": 50
+        },
+        "required": true
+      },
+      {
+        "no": 10,
+        "step": "B",
+        "name": "点确定打印",
+        "repeat": {
+          "min": 1,
+          "max": 50
+        },
+        "required": false
+      },
+      {
+        "no": 11,
+        "step": "B",
+        "name": "关闭弹框",
+        "repeat": {
+          "min": 0,
+          "max": 999
+        },
+        "required": false
+      },
+      {
+        "no": 12,
+        "step": "B",
+        "name": "填手机号",
+        "repeat": {
+          "min": 0,
+          "max": 999
+        },
+        "required": false
+      },
+      {
+        "no": 13,
+        "step": "C",
+        "name": "点退回寄件人",
+        "repeat": {
+          "min": 1,
+          "max": 1
+        },
+        "required": true
+      },
+      {
+        "no": 14,
+        "step": "C",
+        "name": "逐单输入Enter",
+        "repeat": {
+          "min": 1,
+          "max": 50
+        },
+        "required": true
+      },
+      {
+        "no": 15,
+        "step": "C",
+        "name": "点妥投确认",
+        "repeat": {
+          "min": 1,
+          "max": 1
+        },
+        "required": true
+      },
+      {
+        "no": 16,
+        "step": "C",
+        "name": "点关闭",
+        "repeat": {
+          "min": 0,
+          "max": 3
+        },
+        "required": false
+      },
+      {
+        "no": 17,
+        "step": "D",
+        "name": "打开投递归班",
+        "repeat": {
+          "min": 1,
+          "max": 1
+        },
+        "required": true
+      },
+      {
+        "no": 18,
+        "step": "D",
+        "name": "选投递员",
+        "repeat": {
+          "min": 1,
+          "max": 1
+        },
+        "required": true
+      },
+      {
+        "no": 19,
+        "step": "D",
+        "name": "点查询",
+        "repeat": {
+          "min": 1,
+          "max": 3
+        },
+        "required": true
+      },
+      {
+        "no": 20,
+        "step": "D",
+        "name": "点确定",
+        "repeat": {
+          "min": 1,
+          "max": 3
+        },
+        "required": true
+      },
+      {
+        "no": 21,
+        "step": "D",
+        "name": "点 ->",
+        "repeat": {
+          "min": 1,
+          "max": 1
+        },
+        "required": true
+      }
+    ]
+  }
+}

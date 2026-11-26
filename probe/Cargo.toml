@@ -1,0 +1,66 @@
+[package]
+name = "probe"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+description = "退货流程取证探针（内网寄递业务平台内网取证）"
+
+[lib]
+name = "probe"
+path = "src/lib.rs"
+
+[[bin]]
+name = "probe"
+path = "src/main.rs"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+tokio-tungstenite = "0.24"
+futures-util = "0.3"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+clap = { version = "4", features = ["derive"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "time"] }
+anyhow = "1"
+thiserror = "2"
+base64 = "0.22"
+image = { version = "0.25", default-features = false, features = ["png"] }
+time = { version = "0.3", features = ["formatting", "macros", "local-offset"] }
+crossbeam-channel = "0.5"
+regex = "1"
+once_cell = "1"
+sha2 = "0.10"
+
+# 注意：不使用 reqwest。
+# 原因：reqwest 的 rustls 路径会拉进 ring，ring 需要 C 工具链，违反 §15.2
+# "不要引入任何需要 C 编译器或 cmake 的 crate"。探针只需要在 127.0.0.1 上发
+# 一个明文 HTTP/1.1 GET（/json/version），自己用 tokio::net::TcpStream 写即可（http1.rs）。
+
+[dependencies.windows]
+version = "0.58"
+features = [
+  "Win32_Foundation",
+  "Win32_UI_WindowsAndMessaging",
+  "Win32_UI_HiDpi",
+  "Win32_Graphics_Gdi",
+  "Win32_Graphics_Printing",
+  "Win32_Storage_FileSystem",
+  "Win32_Storage_Xps",
+  "Win32_UI_Input_KeyboardAndMouse",
+  "Win32_System_Threading",
+  "Win32_System_ProcessStatus",
+  "Win32_System_Diagnostics_ToolHelp",
+  "Win32_System_Console",
+  "Win32_System_Registry",
+  "Win32_System_LibraryLoader",
+  "Win32_System_SystemInformation",
+  "Win32_Security",
+]
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

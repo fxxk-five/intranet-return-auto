@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "内网退货自动处理助手",
+  "version": "1.0.0",
+  "description": "内网投递系统退货全流程自动化助手（A→B→A→C→D），自动识别登录账号与绑定道段，零出纸零弹窗。",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "打开 / 收起 内网退货自动处理助手",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "permissions": [
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://10.4.188.1/*",
+    "http://10.4.188.1/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://10.4.188.1/portal/*",
+        "http://10.4.188.1/portal/*",
+        "https://10.4.188.1/delivery-web/*",
+        "http://10.4.188.1/delivery-web/*"
+      ],
+      "js": [
+        "boot_flag.js",
+        "return_auto.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false,
+      "world": "MAIN"
+    }
+  ]
+}
